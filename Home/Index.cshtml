@@ -1,0 +1,48 @@
+﻿@model WebBraspag.Solution.Formulario
+@{
+    ViewData["Title"] = "Braspag -| Uma empresa Cielo";
+}
+<center>
+
+    <h2>Pedido</h2>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="input-group input-group-sm col-md-3">
+            <input asp-for="Email" id="email" type="email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="input-group input-group-sm col-md-3">
+            <input asp-for="Nome" id="Customer.Name" type="text" class="form-control" placeholder="Nome Completo" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <div class="input-group input-group-sm col-md-3">
+            <input asp-for="Cpf" id="cpf" type="text" class="form-control" onkeypress="formatar(this,'000.000.000-00')" maxLength=14 placeholder="CPF" />
+            <span asp-validation-for="Cpf" class="text-danger"></span>
+        </div>
+
+        <div class="input-group input-group-sm col-md-3">
+            <input asp-for="NumPedido" id="MerchantOrderId" type="text" class="form-control" placeholder="Numero do Pedido" />
+            <span asp-validation-for="NumPedido" class="text-danger"></span>
+        </div>
+
+        <div class="input-group input-group-sm col-md-3">
+            <input asp-for="ChaveAcesso" id="MerchantKey" type="text" class="form-control" placeholder="Chave de Acesso" />
+            <span asp-validation-for="ChaveAcesso" class="text-danger"></span>
+        </div>
+    </form>
+    <br />
+
+    <div class="g-recaptcha input-group-sm mb-3" data-sitekey="6LdPYXsUAAAAAOQD1C4njDeUX4PTmgqXpI4GDb4A"></div>
+    <a href="https://localhost:44390/Home/Index2"><button id="button" type="submit" class="btn btn-primary btn-lg">Confirmar</button></a>
+
+</center>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

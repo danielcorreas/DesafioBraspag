@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="shortcut icon" type="image/x-icon" href="https://blackboxprod.blob.core.windows.net/images/braspag-new-icon.png">
+    <script>
+
+        function formatar(src, mask) {
+            var i = src.value.length;
+            var saida = mask.substring(0, 1);
+            var texto = mask.substring(i)
+            if (texto.substring(0, 1) != saida) {
+                src.value += texto.substring(0, 1);
+            }
+        }
+
+        var div = document.getElementById('email');
+
+    </script>
+
+
+</head>
+<body>
+    <nav class="class=" navbar navbar-light" style="background-color: #00ADEF;">
+        <img src="data:image/png;base64,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"
+             width="90" height="70" />
+    </nav>
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2018 - WebBraspag</p>
+        </footer>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
